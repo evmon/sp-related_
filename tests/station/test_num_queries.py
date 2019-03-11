@@ -1,8 +1,7 @@
 from django.db.models import Prefetch
 from django.test.testcases import TransactionTestCase
-from service import settings
 
-from .models import Transport, Client, Wheel
+from station.models import Transport, Client, Wheel
 from .factories import (SpareFactory, TransportFactory, ClientFactory,
     TypeFactory, ColorFactory, WheelFactory, )
 
