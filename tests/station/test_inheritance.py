@@ -1,13 +1,11 @@
-from django.test.testcases import TestCase
-from django.core.exceptions import ObjectDoesNotExist
 from django.test.testcases import TransactionTestCase
 
-from station.models import (Transport, Client, Wheel, Spare, SpareProxy,
+from station.models import (Transport, Spare, SpareProxy,
     PassengerСar, Truck, PlateNumberAbs, MilitaryNumber, SEATS_MAX,
     HEIGHT_MAX, WIDTH_MAX, CivilNumber, )
-from .factories import (SpareFactory, TransportFactory, ClientFactory,
-    TypeFactory, ColorFactory, WheelFactory, TruckFactory,
+from .factories import (SpareFactory, ColorFactory, TruckFactory,
     PassengerСarFactory, MilitaryNumberFactory, CivilNumberFactory, )
+
 
 class InheritanceTestCase(TransactionTestCase):
     reset_sequences = True
