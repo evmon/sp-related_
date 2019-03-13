@@ -1,4 +1,9 @@
 from django.db import models
+from django.contrib.sites.models import Site
+from django.contrib.sites.managers import CurrentSiteManager
+
+from service.settings import SITE_ID
+
 
 DEVELOPED_COUNTRY = ['USA', 'UK', 'Argentina']
 HEIGHT_MAX = 27.2
@@ -18,6 +23,9 @@ class Spare(models.Model):
 class Color(models.Model):
     name = models.CharField(max_length=20)
     shade = models.CharField(max_length=20)
+    sites = models.ManyToManyField(Site)
+    objects = models.Manager()
+    on_site = CurrentSiteManager()
 
 
 class Transport(models.Model):
@@ -116,3 +124,9 @@ class MilitaryNumber(PlateNumberAbs):
 
     def get_plate_number(self):
         return f'{self.number} {self.serial}'
+
+class New(models.Model):
+    title = models.CharField(max_length=200)
+    site = models.ForeignKey(Site, on_delete=models.CASCADE)
+    objects = models.Manager()
+    on_site = CurrentSiteManager()
